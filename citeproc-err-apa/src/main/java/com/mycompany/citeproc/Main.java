@@ -19,19 +19,17 @@ public class Main {
     
     public static void main(String[] args) throws IOException {
         var item = new CSLItemDataBuilder().id("60f065df404ba66b0d890be5")
-                .type(CSLType.BOOK)
+                .type(CSLType.ARTICLE_JOURNAL)
                 .language("eng")
                 .author(    new CSLNameBuilder()
-                            .literal("Robert Southey")
-                            .build())
-                .editorialDirector(
-                           new CSLNameBuilder()
-                            .literal("Jonathan González")
+                            .literal("Luke Skywalker")
                             .build(),
-                           new CSLNameBuilder()
-                            .literal("Cristina Flores")
-                            .build()
-                )
+                        new CSLNameBuilder()
+                                .literal("Robert Southey")
+                                .build()
+                        )
+
+
                 .issued(2021)
                 .publisher("Routledge")
                 .title("Letters Written During a Short Residence in Spain and Portugal by Robert Southey")
@@ -40,7 +38,7 @@ public class Main {
         
         var itemDataProvider = new ListItemDataProvider(List.of(item));
         
-        var csl = new CSL(itemDataProvider, "apa", "es-ES");
+        var csl = new CSL(itemDataProvider, "harvard-cite-them-right", "es-ES");
         
         csl.registerCitationItems(itemDataProvider.getIds());
         csl.setOutputFormat("text");
